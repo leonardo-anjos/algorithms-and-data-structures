@@ -2,7 +2,10 @@
 #include <stdlib.h>
 #include "Fila.h"
 
-int main() {
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+int main(int argc, char *argv[]) {
+	
 	Fila * f = criar();
 	enfileirar(f, 8);
 	enfileirar(f, 1);
@@ -11,8 +14,13 @@ int main() {
 	
 	imprimir(f);
 	printf("Primeiro: %d\n", primeiro(f));
+	printf("Elemento meio: %d\n", elemento_meio(f));
+	printf("Ultimo: %d\n", ultimo(f));
 	printf("Tamanho: %d\n", tamanho(f));
 
 	destruir(f);
+	
+	return 0;
 }
+
 
