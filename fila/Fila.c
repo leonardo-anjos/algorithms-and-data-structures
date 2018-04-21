@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "Fila.h"
 
-#define TAM_MAX 5
+#define TAM_MAX 10
 
 struct fila {
 	int itens[TAM_MAX];
@@ -87,4 +87,25 @@ int elemento_meio(Fila * f) {
 	}
 	
 	return f->itens[tamanho(f)/2];	
+}
+
+void esta_vazia(Fila * f) {
+	if(tamanho(f) == 0) {
+		printf("Fila esta vazia!\n");
+	} else {
+		printf("Nao esta vazia!\n");
+	}	
+}
+
+void limpar(Fila * f) {
+	if(tamanho(f) == 0) {
+		printf("Fila esta vazia!\n");
+	} 
+	
+	int i;
+	for(i=0; i<f->fim; i++) {
+		desenfileirar(f);
+	}
+	
+	esta_vazia(f);
 }
