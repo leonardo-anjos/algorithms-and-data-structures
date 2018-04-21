@@ -33,8 +33,8 @@ int desenfileirar(Fila * f) {
 void enfileirar(Fila * f, int valor) {
 	if (tamanho(f) == TAM_MAX) {
 		printf("Fila cheia!\n");
-		return;
-	}
+	} 
+	
 	if (f->fim == TAM_MAX) {
 		int i, j;
 		for (i=0, j=f->inicio; j<f->fim; i++, j++) {
@@ -58,6 +58,7 @@ int primeiro(Fila * f) {
 	return f->itens[f->inicio];	
 }
 
+/* implementacoes adicionais da lista */
 void imprimir(Fila * f) {
 	int i;
 	printf("[ ");
@@ -65,4 +66,25 @@ void imprimir(Fila * f) {
 		printf("%d ", f->itens[i]);
 	}
 	printf("]\n");
+}
+
+int ultimo(Fila * f) {
+	if (tamanho(f) == 0) {
+		printf("Fila vazia!\n");
+		return -1;
+	}	
+	return f->itens[f->fim-1];	
+}
+
+int elemento_meio(Fila * f) {
+	if (tamanho(f) == 0) {
+		printf("Fila vazia!\n");
+		return -1;
+	} 
+	
+	if (tamanho(f)%2==0) {
+		printf("A qtd de elementos da fila e par!\n");
+	}
+	
+	return f->itens[tamanho(f)/2];	
 }
