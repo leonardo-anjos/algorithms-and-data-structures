@@ -6,25 +6,10 @@
 
 int main(int argc, char *argv[]) {
 	
-	Conta * c1 = criar("leonardo");
-	creditar(c1, 1000);
-	debitar(c1, 300);
-	printf("Saldo c1: %.2f\n", saldo(c1));
-	destruir(c1);
+	Conta * c = criar("banco do brasil");
 	
-/*	c2 = c1;
+	imprimir(c);
 	
-	creditar(c1, 1000);
-	debitar(c1, 300);
-	
-	printf("Saldo c1: %.2f\n", saldo(c1));
-	
-	debitar(c2, 300);
-	creditar(c2, 1000);
-	printf("Saldo c2: %.2f\n", saldo(c2));	
-	
-	destruir(c1);
-	destruir(c2);
-*/
+	destruir(c);
 }
 

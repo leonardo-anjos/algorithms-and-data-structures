@@ -12,7 +12,7 @@ struct conta {
 Conta * criar(char nome) {
 	Conta * c = malloc(sizeof(Conta));
 	c->saldo = 0;
-	c->limite = 500;
+	c->limite = 800;
 	c->nome[0]='\0';
 	strcpy(c->nome, nome);
 	return c;
