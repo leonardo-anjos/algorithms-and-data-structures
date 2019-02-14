@@ -2,26 +2,43 @@
 #include<stdlib.h>
 #include "Fracao.h"
 
+struct fracao {
+	float numerador;
+	float denominador;
+};
 
-cria_fracao(n, d) {
-	int n1 = n;
-	int n2 = n;
-}
+Fracao * criar(float numerador, float denominador) {
+	Fracao * f = malloc(sizeof(Fracao));
+	f->numerador = numerador;
+	f->denominador = denominador;
+	return f;
+};
 
-acessa_numerador(f) {
-		
-}
+float numerador(Fracao * f) {
+	return f->numerador;
+};
 
-acessa_denominador(f) {
+float denominador(Fracao * f) {
+	return f->denominador;
+};
+
+float divisao(Fracao * f) {
+	if(denominador != 0) {
+		return f->numerador / f->denominador;
+	} else {
+		return NULL;
+	}
 	
-}
+};
 
-soma_fracao(fracao f1, fracao f2) {
+void imprimir(Fracao * f) {
+	printf("numerador = %.2f\n", f->numerador);
+	printf("denominador = %.2f\n", f->denominador);
+};
 
-	int n1 = get_numerador(f1);
-	n2 = acessa_numerador(f2);
-	d1 = acessa_denominador(f1);
-	d2 = acessa_denominador(f2);
-	
-	return cria_fracao(n1*d2 + n2*d1, d1*d2 ); 
-}
+void destruir(Fracao * f) {
+	if(f != NULL) {
+		free(f);
+	}
+};
+

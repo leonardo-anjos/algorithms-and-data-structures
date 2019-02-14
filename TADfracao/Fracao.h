@@ -1,10 +1,14 @@
+typedef struct fracao Fracao;
 
-cria_fracao(n, d);
+Fracao * criar(float numerador, float denominador);
 
-acessa_numerador(f);
+float numerador(Fracao * f);
+float denominador(Fracao * f);
+float divisao(Fracao * f);
 
-acessa_denominador(f);
+void imprimir(Fracao * f);
 
+void destruir(Fracao * f);
 
 
 
