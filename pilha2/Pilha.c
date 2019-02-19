@@ -1,5 +1,8 @@
+// implementacao concreta da tad
+
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "Pilha.h"
 
 #define TAM_MAX 5
@@ -23,17 +26,19 @@ void empilhar(Pilha * p, int valor) {
 	p->itens[p->topo++] = valor;	
 }
 
-int desempilhar(Pilha * p) {
-	if (p->topo == 0) {
-		printf("Pilha vazia!\n");
-		return -1;
-	}
-	return p->itens[--p->topo];
-}
-
 int tamanho(Pilha * p) {
 	return p->topo;
 }
+
+//void inverter2(Pilha * p) {
+//	int inicioP, fimP, aux;
+//	
+//	for(inicioP=0, fimP=p->topo-1; inicioP<fimP; inicioP++, fimP--) {
+//		aux = p->itens[inicioP];
+//		p->itens[inicioP] = p->itens[fimP];
+//		p->itens[fimP] = aux;
+//	}
+//}
 
 int topo(Pilha * p) {
 	if (p->topo == 0) {
@@ -52,50 +57,47 @@ void imprimir(Pilha * p) {
 	printf("]\n");
 }
 
-/* adicionados */
-int somaDosElementos(Pilha * p) {
-	int i, total = 0;
-	for(i=0; i<p->topo; i++) {
-		total += p->itens[i];
-	}
-	printf("soma = %d\n\n", total);
-}
-
-int mediaSomaDosElementos(Pilha * p) {
-	int i, total = 0;
-	for(i=0; i<p->topo; i++) {
-		total += p->itens[i];
-	}
-	
-	float media = (float)total / tamanho(p);
-	printf("media = %.2f\n\n", media);
-}
-
-int esta_vazia(Pilha * p) {
+int desempilhar(Pilha * p) {
 	if (p->topo == 0) {
 		printf("Pilha vazia!\n");
 		return -1;
 	}
+	return p->itens[--p->topo];
 }
 
-void pilhaPar(Pilha * p) {
+int eh_igual(Pilha * p1, Pilha * p2) {
 	int i;
-	for(i=0; i<p->topo; i++) {
-		if(p->itens[i]%2==0) {
-			desempilhar(p);
-		}
+	
+	if(tamanho(p1) != tamanho(p2)) {
+		return 0;
 	}
-	imprimir(p);
+	
+	for(i=0; i<p1->topo; i++) {
+		if(p1->itens[i] != p2->itens[i]) {
+			return 0;
+		}
+		return 1;
+	}
 }
 
-void pilhaImpar(Pilha * p) {
-	int i;
-	for(i=0; i<p->topo; i++) {
-		if(p->itens[i]%2!=0) {
-			desempilhar(p);
-		}
-	}
+void clonar(Pilha * p) {
 	imprimir(p);
+	
+	Pilha * aux = criar();
+	Pilha * clone = criar();
+	
+	while(tamanho(p) > 0) {
+		empilhar(aux, desempilhar(p));
+	}
+	
+	while(tamanho(aux) > 0) {
+		empilhar(clone, desempilhar(aux));
+	}
+	
+	printf("pilha clone");
+	imprimir(clone);
+	
+	destruir(clone);	
 }
 
 void destruir(Pilha * p) {
@@ -103,3 +105,4 @@ void destruir(Pilha * p) {
 		free(p);
 	}
 }
+
