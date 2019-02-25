@@ -56,6 +56,24 @@ void inverter(Pilha * p) {
 	destruir(aux2);
 }
 
+void clonar2(Pilha * p) {
+	Pilha * aux = criar();
+	Pilha * clone = criar();
+	
+	while(tamanho(p) > 0) {
+		empilhar(aux, desempilhar(p));
+	}
+	
+	while(tamanho(aux) > 0) {
+		empilhar(clone, desempilhar(aux));
+	}
+	
+	printf("pilha clone: ");
+	imprimir(clone);
+	
+	destruir(clone);
+}
+
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char *argv[]) {
@@ -96,7 +114,7 @@ int main(int argc, char *argv[]) {
 	empilhar(p2, 5);
 	empilhar(p2, 0);
 
-	imprimir(p);
+//	imprimir(p);
 	imprimir(p2);
 
 //	printf("%d\n", eh_igual(p, p2));
@@ -120,17 +138,19 @@ int main(int argc, char *argv[]) {
 //	inverter2(p1);
 //	imprimir2(p2);
 	
-	printf("%d\n", eh_igual(p, p2));
-//	printf("As pilhas sao iguais? %c", eh_igual(p, p2) ? 's' : 'n');
+//	printf("%d\n", eh_igual(p, p2));
+//	printf("As pilhas sao iguais? %c\n\n", eh_igual(p, p2) ? 's': 'n');
 	
-	Pilha * p_clone = criar();
+//	Pilha * p_clone = criar();
+//	
+//	empilhar(p_clone, 9);
+//	empilhar(p_clone, 8);
+//	empilhar(p_clone, 7);
+//	
+//	clonar(p_clone);
 	
-	empilhar(p_clone, 9);
-	empilhar(p_clone, 8);
-	empilhar(p_clone, 7);
+	clonar2(p2);	
 	
-	clonar(p_clone);
-		
-	destruir(p);
-	
+//	destruir(p);
+	destruir(p2);
 }
