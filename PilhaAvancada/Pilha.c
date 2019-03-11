@@ -21,24 +21,29 @@ Pilha * criar() {
 void empilhar(Pilha * p, int valor) {
 	if (p->topo == TAM_MAX) {
 		printf("Pilha cheia!\n");
-		return;
 	}
 	p->itens[p->topo++] = valor;	
+}
+
+int desempilhar(Pilha * p) {
+	if (p->topo == 0) {
+		printf("Pilha vazia!\n");
+		return -1;
+	}
+	return p->itens[--p->topo];
 }
 
 int tamanho(Pilha * p) {
 	return p->topo;
 }
 
-//void inverter2(Pilha * p) {
-//	int inicioP, fimP, aux;
-//	
-//	for(inicioP=0, fimP=p->topo-1; inicioP<fimP; inicioP++, fimP--) {
-//		aux = p->itens[inicioP];
-//		p->itens[inicioP] = p->itens[fimP];
-//		p->itens[fimP] = aux;
-//	}
-//}
+int base(Pilha * p) {
+	if (p->topo == 0) {
+		printf("Pilha vazia!\n");
+		return -1;
+	}
+	return p->itens[0];
+}
 
 int topo(Pilha * p) {
 	if (p->topo == 0) {
@@ -57,12 +62,24 @@ void imprimir(Pilha * p) {
 	printf("]\n");
 }
 
-int desempilhar(Pilha * p) {
-	if (p->topo == 0) {
-		printf("Pilha vazia!\n");
-		return -1;
+void inserir_base(Pilha * p, int v) {
+	if (p->topo == TAM_MAX) {
+		printf("Pilha cheia!\n");
 	}
-	return p->itens[--p->topo];
+	
+	Pilha * aux = criar();
+	
+	while(tamanho(p) > 0) {
+		empilhar(aux, desempilhar(p));
+	}
+
+	empilhar(p, v);
+
+	while(tamanho(aux) > 0) {
+		empilhar(p, desempilhar(aux));
+	}
+
+	destruir(aux);	
 }
 
 int eh_igual(Pilha * p1, Pilha * p2) {
@@ -80,9 +97,18 @@ int eh_igual(Pilha * p1, Pilha * p2) {
 	}
 }
 
-void clonar(Pilha * p) {
-	imprimir(p);
+void inverter(Pilha * p) {
+	int inicioP, fimP, aux;
 	
+	for(inicioP=0, fimP=p->topo-1; inicioP<fimP; inicioP++, fimP--) {
+		aux = p->itens[inicioP];
+		p->itens[inicioP] = p->itens[fimP];
+		p->itens[fimP] = aux;
+	}
+	imprimir(p);
+}
+
+void clonar(Pilha * p) {
 	Pilha * aux = criar();
 	Pilha * clone = criar();
 	
@@ -105,4 +131,3 @@ void destruir(Pilha * p) {
 		free(p);
 	}
 }
-
