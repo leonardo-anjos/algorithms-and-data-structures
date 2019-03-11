@@ -94,7 +94,7 @@ void clonar(Pilha * p) {
 		empilhar(clone, desempilhar(aux));
 	}
 	
-	printf("pilha clone");
+	printf("pilha clone: ");
 	imprimir(clone);
 	
 	destruir(clone);	

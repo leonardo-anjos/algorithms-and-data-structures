@@ -19,3 +19,4 @@ int eh_igual(Pilha * p1, Pilha * p2);
 //void inverter(Pilha * p);
 void clonar(Pilha * p);
 
+
