@@ -12,19 +12,22 @@ int main(int argc, char *argv[]) {
 	enfileirar(f, 2);
 	enfileirar(f, 3);
 	enfileirar(f, 4);
-	enfileirar(f, 5); // fila cheia
+	// enfileirar(f, 5); // fila cheia
 	
-	printf("tamanho da fila %d\n", tamanho(f));
-	printf("primeiro da fila %d\n", primeiro(f));
-	printf("ultimo da fila %d\n", ultimo(f));
+	// printf("tamanho da fila %d\n", tamanho(f));
+	// printf("primeiro da fila %d\n", primeiro(f));
+	// printf("ultimo da fila %d\n", ultimo(f));
 	
 //	printf("esta vazia? %c\n", esta_vazia(f) ? 's' : 'n');
-//	imprimir(f);
+	imprimir(f);
 	
-//	desenfileirar(f);
-//	desenfileirar(f);
+	// printf("desenfileirando... => ");
+	// desenfileirar(f);
+	// desenfileirar(f);
+	
 //	
-//	enfileirar(f, 3);
+	enfileirar(f, 3);
+	imprimir(f);
 //	
 //	printf("tamanho da fila %d\n", tamanho(f));
 //	printf("primeiro da fila %d\n", primeiro(f));

@@ -22,30 +22,12 @@ void destruir(Fila * f) {
 	}
 }
 
-int desenfileirar(Fila * f) {
-	if (f->inicio == f->fim) {
-		printf("Fila vazia!\n");
-		return -1;
-	}
-	return f->itens[f->inicio++];
-}
-
 void enfileirar(Fila * f, int valor) {
 	if (tamanho(f) == TAM_MAX) {
 		printf("Fila cheia!\n");
-		return -1;
 	} 
-	
-//	if (f->fim == TAM_MAX) {
-//		int i, j;
-//		for (i=0, j=f->inicio; j<f->fim; i++, j++) {
-//			f->itens[i] = f->itens[j];
-//		}
-//		f->inicio = 0;
-//		f->fim = i;
-//	}
 
-//	testa se esta colado no fim do array -> implementacao MURILO
+	//	testa se esta colado no fim do array -> implementacao MURILO
 	if (f->fim == TAM_MAX) {
 		int i;
 		for (i=0; i<tamanho(f); i++) {
@@ -54,8 +36,19 @@ void enfileirar(Fila * f, int valor) {
 		f->inicio = 0;
 		f->fim = tamanho(f);
 	}
-	
 	f->itens[f->fim++] = valor;
+}
+
+int desenfileirar(Fila * f) {
+	if (f->inicio == f->fim) {
+		printf("Fila vazia!\n");
+		return -1;
+	}
+	return f->itens[f->inicio++];
+}
+
+int tamanho(Fila * f) {
+	return f->fim - f->inicio;
 }
 
 int primeiro(Fila * f) {
@@ -69,41 +62,6 @@ int primeiro(Fila * f) {
 int ultimo(Fila * f) {
 	return f->itens[f->fim];	
 }
-
-int tamanho(Fila * f) {
-	return f->fim - f->inicio;
-}
-
-/* implementacoes adicionais da lista */
-void imprimir(Fila * f) {
-	int i;
-	printf("[ ");
-	for(i=0; i<f->fim; i++) {
-		printf("%d ", f->itens[i]);
-	}
-	printf("]\n");
-}
-
-//int ultimo(Fila * f) {
-//	if (tamanho(f) == 0) {
-//		printf("Fila vazia!\n");
-//		return -1;
-//	}	
-//	return f->itens[f->fim-1];	
-//}
-//
-//int elemento_meio(Fila * f) {
-//	if (tamanho(f) == 0) {
-//		printf("Fila vazia!\n");
-//		return -1;
-//	} 
-//	
-//	if (tamanho(f)%2==0) {
-//		printf("A qtd de elementos da fila e par!\n");
-//	}
-//	
-//	return f->itens[tamanho(f)/2];	
-//}
 
 int esta_vazia(Fila * f) {
 	if(tamanho(f) == 0) {
@@ -124,4 +82,14 @@ void limpar(Fila * f) {
 	}
 	
 	esta_vazia(f);
+}
+
+/* implementacoes adicionais da lista */
+void imprimir(Fila * f) {
+	int i;
+	printf("[ ");
+	for(i=0; i<f->fim; i++) {
+		printf("%d ", f->itens[i]);
+	}
+	printf("]\n");
 }
